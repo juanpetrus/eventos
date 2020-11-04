@@ -40,6 +40,9 @@
           </tr>
           @endforeach
         </table>
+
+
+        {{ $eventos->links() }}
       </div>
     </div>
 

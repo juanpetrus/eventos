@@ -11,14 +11,11 @@ class ConviteMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    private $data;
+
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,14 +25,15 @@ class ConviteMail extends Mailable
      */
     public function build()
     {
-        return $this->replyTo('juan.petruss@gmail.com', 'Juan')
-                    ->to('juan.petruss@gmail.com', 'Juan')
+        return $this->replyTo($this->data['email'], $this->data['convidado'])
+                    ->to($this->data['email_criador'], $this->data['criador'])
                     ->from($this->data['email'], $this->data['convidado'])
-                    ->subject('Evento '.$this->data['nome'])
+                    ->subject('EVENTO: Convite - '.$this->data['nome'])
                     ->markdown('email.ConviteMail',[
                         'nome' => $this->data['nome'],
                         'descricao' => $this->data['descricao'],
                         'data_evento' => $this->data['data_evento'],
+                        'criador' => $this->data['criador'],
                         'convidado' => $this->data['convidado'],
                         'email' => $this->data['email'],
                     ]);

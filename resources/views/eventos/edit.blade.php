@@ -53,7 +53,11 @@
             </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar</button>
+            <a class="btn btn-danger" href="{{route('eventos.index')}}" >
+              <i class="fas fa-sign-out-alt fa-sm text-gray-400"></i>
+              Cancelar
+            </a>
 
           </form>
         </div>

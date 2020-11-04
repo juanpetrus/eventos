@@ -50,12 +50,12 @@
               <option value="{{$participante->id}}">{{$participante->name}}</option>
               @endforeach
             </select>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </form>
+            
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Convidar</a>
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
         </div>
       </div>
     </div>

@@ -1,29 +1,30 @@
 <?php
 
-namespace App\Mail;
+namespace App\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Mail\Mailable;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class EventoMail extends Mailable
+class DisparoMail implements ShouldQueue
 {
-    use Queueable, SerializesModels;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private $data;
-
+    
     public function __construct($data)
     {
         $this->data = $data;
     }
 
     /**
-     * Build the message.
+     * Execute the job.
      *
-     * @return $this
+     * @return void
      */
-    public function build()
+    public function handle()
     {
         return $this->replyTo($this->data['email'], $this->data['nome'])
                     ->to('juan.petruss@gmail.com', 'Juan')
